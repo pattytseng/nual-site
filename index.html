@@ -1343,3 +1343,31 @@ dialog#lb figcaption .mx-ct{display:block;margin-bottom:3px;font-size:1.02rem;fo
   }
 })();
 </script>
+<!--vsw-->
+<style id="vsw-css">
+.vsw{position:fixed;left:14px;bottom:max(14px,env(safe-area-inset-bottom));z-index:59;display:flex;gap:2px;padding:3px;background:rgba(20,20,20,.88);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-radius:999px;font:600 12px/1 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.02em;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+.vsw a{display:block;padding:9px 13px;border-radius:999px;color:#d9d9d4;text-decoration:none;min-height:30px;box-sizing:border-box}
+.vsw a:hover{color:#fff}
+.vsw a[aria-current="page"]{background:#fff;color:#141414}
+.vsw a:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media (max-width:640px){.vsw{bottom:max(60px,env(safe-area-inset-bottom))}}
+@media print{.vsw{display:none}}
+</style>
+<nav class="vsw" id="vsw" aria-label="Version"><a href="./" id="vsw-c">Clinic</a><a href="editorial/" id="vsw-e">Editorial</a></nav>
+<script id="vsw-js">
+(function(){
+  try{
+    var p=location.pathname, ed=/\/editorial(\/|\/index\.html)?$/.test(p);
+    var c=document.getElementById('vsw-c'), e=document.getElementById('vsw-e');
+    if(!c||!e) return;
+    var tail=location.search+location.hash;
+    c.setAttribute('href', (ed?'../':'./')+tail);
+    e.setAttribute('href', (ed?'./':'editorial/')+tail);
+    (ed?e:c).setAttribute('aria-current','page');
+    window.addEventListener('hashchange',function(){
+      var t=location.search+location.hash;
+      c.setAttribute('href',(ed?'../':'./')+t); e.setAttribute('href',(ed?'./':'editorial/')+t);
+    });
+  }catch(_){}
+})();
+</script>
